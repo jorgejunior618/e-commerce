@@ -1,5 +1,26 @@
 # E-COMMERCE Api
 
+## Banco de Dados
+
+  ### Usuário
+  ```
+  (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR NOT NULL,
+    email VARCHAR NOT NULL,
+    password VARCHAR NOT NULL
+  )
+  ```
+
+  ### Mensagens
+  ```
+  (
+    id SERIAL,
+    userId INT NOT NULL,
+    message VARCHAR NOT NULL
+  )
+  ```
+
 ## Rotas
 
  ### Sessão
