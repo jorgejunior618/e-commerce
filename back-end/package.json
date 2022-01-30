@@ -1,0 +1,31 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Api para aplicação de envio e salvamento de avaliações de loja virtual ficticia",
+  "main": "./dist/index.ts",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "build": "npx tsc -p .",
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgejunior618/e-commerce.git"
+  },
+  "keywords": [
+    "Api",
+    "sql",
+    "NodeJS",
+    "express"
+  ],
+  "author": "Jorge Junior",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgejunior618/e-commerce/issues"
+  },
+  "homepage": "https://github.com/jorgejunior618/e-commerce#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
