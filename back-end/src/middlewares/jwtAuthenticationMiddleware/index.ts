@@ -2,8 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import AuthorizationType from "../../models/Authorization";
 import ForbidenError from "../../models/Errors/ForbidenError";
 import JWT from 'jsonwebtoken';
+import { User } from "../../models/User";
 
-async function jwtAuthenticationMidleware(request: Request, response: Response, next: NextFunction) {
+async function jwtAuthenticationMiddleware(request: Request, response: Response, next: NextFunction) {
   try {
     const authHeader = request.headers['authorization'];
     
@@ -18,8 +19,6 @@ async function jwtAuthenticationMidleware(request: Request, response: Response, 
     }
 
     const tokenPayload = JWT.verify(authToken, 'secret_jwt_key');
-    console.log({tokenPayload});
-    
     
     if(typeof tokenPayload !== 'object' || !tokenPayload.sub) {
       throw new ForbidenError("Autenticação inválida");
@@ -27,19 +26,19 @@ async function jwtAuthenticationMidleware(request: Request, response: Response, 
 
     const id = tokenPayload.sub;
 
-    const user = {
-      id,
+    const user: User = {
+      id: Number(id),
       name: tokenPayload.name,
+      email: tokenPayload.email,
     }
-    
-    // request.user = user;
+
+    request.user = user;
     next();
   } catch (error) {
-    console.log({error});
     
     next(error);
   }
 }
 
-export default jwtAuthenticationMidleware;
+export default jwtAuthenticationMiddleware;
 

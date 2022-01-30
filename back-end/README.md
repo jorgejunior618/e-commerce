@@ -46,6 +46,11 @@
     - Headers: Token bearer
     - Body: { email: string, name: string, password: string }
     - Retorno: novo Token
+  
+  - ```DELETE```: "/profile" (Atualização de dados do usuário)
+    - Headers: Token bearer
+    - Body: { email: string, name: string, password: string }
+    - Retorno: novo Token
 
  ### Avaliações
   

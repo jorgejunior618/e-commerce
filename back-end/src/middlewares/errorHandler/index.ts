@@ -7,10 +7,10 @@ function errorHandler(error: any, request: Request, response: Response, next: Ne
   if(error instanceof DbError) {
     response.sendStatus(400);
   }
-  if(error instanceof ForbidenError) {
-    response.sendStatus(400);
+  else if(error instanceof ForbidenError) {
+    response.sendStatus(401);
   }
-  if(error instanceof JsonWebTokenError) {
+  else if(error instanceof JsonWebTokenError) {
     response.sendStatus(401);
   } else {
     response.sendStatus(500);
