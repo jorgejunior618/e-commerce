@@ -31,13 +31,18 @@
   - ```POST```: "/session/login" (Realizar Login de usuário registrado)
     - Body: { email: string, password: string(Hash) }
     - Retorno: Token com dados do usuário
+    
   - ```POST```: "/session/register" (Criação de novo usuário)
     - Body: { email: string, name: string, password: string }
     - Retorno: 200 (no body)
 
  ### Usuário
 
-  - ```PUT```: "/user/:id" (Atualização de dados do usuário)
+  - ```GET```: "/profile" (Dados do usuário)
+    - Headers: Token bearer
+    - Retorno: dados do usuario
+  
+  - ```PUT```: "/profile/update" (Atualização de dados do usuário)
     - Headers: Token bearer
     - Body: { email: string, name: string, password: string }
     - Retorno: novo Token
