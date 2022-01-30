@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import JWT from 'jsonwebtoken';
-import { createHash } from 'crypto';
+import User from '../../models/User';
 import getHash from '../../utils/sha1Encoder';
 
 const sessionRoutes = Router();
