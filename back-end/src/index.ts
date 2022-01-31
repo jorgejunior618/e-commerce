@@ -3,9 +3,11 @@ import errorHandler from './middlewares/errorHandler';
 import messageRoutes from './routes/message_routes';
 import sessionRoutes from './routes/session_routes';
 import userRoutes from './routes/user_routes';
+import cors from 'cors';
 
 const app = express();
 
+app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
