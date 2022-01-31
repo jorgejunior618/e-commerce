@@ -4,7 +4,7 @@ import ForbidenError from "../../models/Errors/ForbidenError";
 import { UpdateUser, User } from "../../models/User";
 
 class SessionRepository {
-  async validateLogin(email: string, password: string) : Promise<{success: boolean, user:User}> {
+  async validateLogin(email: string, password: string) : Promise<{success: boolean, user:User | undefined}> {
     try {
       const query = `
         SELECT id, email, name
@@ -13,14 +13,17 @@ class SessionRepository {
         AND password = $2
       `;
       
-      const { rows } = await db.query(query, [email, password]);
-      
+      const { rows } = await db.query(query, [email, password]);      
       if (!rows.length) {
-        throw Error();
+        return {success: false, user: undefined};
       }
       
       const [ user ] = rows;
-      return user;
+      
+      return {
+        success: true,
+        user,
+      };
     } catch (error) {
       if(error instanceof ForbidenError) {
         throw error;

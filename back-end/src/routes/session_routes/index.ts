@@ -17,7 +17,11 @@ sessionRoutes.post('/session/login', async (
   try {
     const { email, password } = request.body;
     const hashPassword = getHash(password);
-    const { user } = await sessionRepository.validateLogin(email, hashPassword);
+    const { user, success } = await sessionRepository.validateLogin(email, hashPassword);
+
+    if (!success || !user) {
+      throw new ForbidenError('Usuário ou senha inválidos');
+    }
 
     const jwtPayload = {
       name: user.name,
@@ -32,6 +36,7 @@ sessionRoutes.post('/session/login', async (
     
     response.status(200).send({ token });
   } catch (error) {
+    console.log({error});
     next(error);
   }
 });
