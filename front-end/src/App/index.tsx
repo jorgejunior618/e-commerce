@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { PageContainer, AppWraper } from "./styles";
+import Header from "./Components/Header";
+import { PageContainer } from "./styles";
 function App() {
   return (
-
-
-    <PageContainer>
-      <AppWraper><Outlet /></AppWraper>
-    </PageContainer>
+    <div>
+      <Header />
+      <PageContainer>
+        <Outlet />
+      </PageContainer>
+    </div>
   );
 }
 
