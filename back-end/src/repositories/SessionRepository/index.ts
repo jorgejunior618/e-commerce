@@ -1,7 +1,7 @@
 import db from "../../dataBase/db-config";
 import DbError from "../../models/Errors/DbError";
 import ForbidenError from "../../models/Errors/ForbidenError";
-import { UpdateUser, User } from "../../models/User";
+import { User } from "../../models/User";
 
 class SessionRepository {
   async validateLogin(email: string, password: string) : Promise<{success: boolean, user:User | undefined}> {

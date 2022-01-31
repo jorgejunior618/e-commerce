@@ -55,11 +55,10 @@
  ### Avaliações
   
   - ```GET```: "/messages"
-    - Headers: Token bearer
     - Retorno: Lista de mensagens
   
   - ```POST```: "/messages"
     - Headers: Token bearer
-    - Body: { message: string, }
+    - Body: { message: string }
     - Retorno: 200 (no body)
 

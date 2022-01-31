@@ -1,5 +1,6 @@
 import express, { json, urlencoded } from 'express';
 import errorHandler from './middlewares/errorHandler';
+import messageRoutes from './routes/message_routes';
 import sessionRoutes from './routes/session_routes';
 import userRoutes from './routes/user_routes';
 
@@ -10,6 +11,7 @@ app.use(urlencoded({ extended: true }));
 
 app.use(sessionRoutes);
 app.use(userRoutes);
+app.use(messageRoutes);
 
 app.use(errorHandler);
 
