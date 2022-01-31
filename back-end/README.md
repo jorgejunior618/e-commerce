@@ -20,7 +20,7 @@
     message VARCHAR NOT NULL,
     CONSTRAINT fk_user_message
       FOREIGN KEY(userId) 
-      REFERENCES ecommerce_messages(id)
+      REFERENCES ecommerce_users(id)
   )
   ```
 
