@@ -42,7 +42,7 @@
     - Headers: Token bearer
     - Retorno: dados do usuario
   
-  - ```PUT```: "/profile/update" (Atualização de dados do usuário)
+  - ```PUT```: "/profile" (Atualização de dados do usuário)
     - Headers: Token bearer
     - Body: { email: string, name: string, password: string }
     - Retorno: novo Token

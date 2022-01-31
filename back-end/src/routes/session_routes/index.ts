@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import JWT from 'jsonwebtoken';
-import { User, UpdateUser } from '../../models/User';
+import { User } from '../../models/User';
 import getHash from '../../utils/sha1Encoder';
 import sessionRepository from '../../repositories/SessionRepository';
-import jwtAuthenticationMiddleware from '../../middlewares/jwtAuthenticationMiddleware';
 import ForbidenError from '../../models/Errors/ForbidenError';
 
 const sessionRoutes = Router();

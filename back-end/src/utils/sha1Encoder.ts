@@ -1,6 +1,5 @@
 import { createHash } from 'crypto';
 
-
 function getHash(str: string): string {
   const sha1Encoder = createHash('sha1');
   sha1Encoder.update(str);

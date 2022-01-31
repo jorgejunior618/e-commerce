@@ -1,8 +1,4 @@
 import { NextFunction, Request, Response, Router } from 'express';
-import JWT from 'jsonwebtoken';
-import { UpdateUser } from '../../models/User';
-import getHash from '../../utils/sha1Encoder';
-import userRepository from '../../repositories/UserRepository';
 import jwtAuthenticationMiddleware from '../../middlewares/jwtAuthenticationMiddleware';
 import ForbidenError from '../../models/Errors/ForbidenError';
 import messageRepository from '../../repositories/MessageRepository';
@@ -13,12 +9,12 @@ const MESSAGE_URL = '/messages';
 
 messageRoutes.get(MESSAGE_URL, async (
   request: Request
-  , response: Response<Message[]>
+  , response: Response<{messages: Message[]}>
   , next: NextFunction
 ) => {
   try {
     const messages = await messageRepository.getMessages();
-    response.status(200).send(messages);
+    response.status(200).send({ messages });
    } catch (error) {
     next(error);
   }
