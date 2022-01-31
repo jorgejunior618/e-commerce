@@ -30,9 +30,9 @@ export async function put(headers: {}, params: {}, endpoint: string): Promise<{}
   }
 }
 
-export async function get(headers: {}, endpoint: string): Promise<AxiosResponse> {
+export async function get<T = any>(headers: {}, endpoint: string): Promise<AxiosResponse<T>> {
   try {
-    return await axios.get(
+    return await axios.get<T>(
       BASE_URL + endpoint,
       {
         headers,

@@ -1,9 +1,10 @@
+import Message from '../../Models/Message';
 import * as httpHelper from '../../utils/http';
 
-async function getMessages() {
+async function getMessages(): Promise<{messages: Message[]}> {
   const headers = httpHelper.defaultHeaders();
 
-  const { data } = await httpHelper.get(headers, '/messages');
+  const { data } = await httpHelper.get<{messages: Message[]}>(headers, '/messages');
   
   return data;
 }

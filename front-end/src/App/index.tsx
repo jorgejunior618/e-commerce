@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
-import messageService from '../services/messages';
-
+import { Outlet } from "react-router-dom";
+import { PageContainer, AppWraper } from "./styles";
 function App() {
-  useEffect(() => {
-    messageService.getMessages();
-  }, []);
   return (
-    <div>
-    </div>
+
+
+    <PageContainer>
+      <AppWraper><Outlet /></AppWraper>
+    </PageContainer>
   );
 }
 
