@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import JWT from 'jsonwebtoken';
-import { User, UpdateUser } from '../../models/User';
+import { UpdateUser } from '../../models/User';
 import getHash from '../../utils/sha1Encoder';
 import userRepository from '../../repositories/UserRepository';
 import jwtAuthenticationMiddleware from '../../middlewares/jwtAuthenticationMiddleware';
@@ -8,6 +8,20 @@ import ForbidenError from '../../models/Errors/ForbidenError';
 
 const userRoutes = Router();
 const USER_URL = '/profile';
+
+userRoutes.get(USER_URL, jwtAuthenticationMiddleware, async (
+  request: Request
+  , response: Response
+  , next: NextFunction
+) => {
+  try {
+    const { user } = request;
+    
+    response.status(200).send({ user });
+   } catch (error) {
+    next(error);
+  }
+});
 
 userRoutes.put(USER_URL, jwtAuthenticationMiddleware, async (
   request: Request<{}, UpdateUser>
