@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Message from "../../../Models/Message";
-import messageService from "../../../services/messages";
-import MessageItem from "../../Components/MessageItem";
+import Message from "../../models/Message";
+import messageService from "../../services/messages";
+import MessageItem from "../../components/MessageItem";
 
 const Messages = () => {
   const [messages, setMessages] = useState<Message[]>([]);

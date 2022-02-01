@@ -1,4 +1,4 @@
-import Message from '../../Models/Message';
+import Message from '../../models/Message';
 import * as httpHelper from '../../utils/http';
 
 async function getMessages(): Promise<{messages: Message[]}> {
