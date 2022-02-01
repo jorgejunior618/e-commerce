@@ -13,11 +13,11 @@ export const ThemeButtonContainer = styled.button`
   justify-content: center;
   
   position: absolute;
-  top: 20px;
+  top: calc(6vh - 25px);
   right: 20px;
   z-index: 10000;
 
-  transition-duration: .6s;
+  transition-duration: .4s;
 
   &:hover {
     opacity: 0.8;
