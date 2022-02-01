@@ -5,7 +5,7 @@ export const PageWrapper =  styled.main`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 88vh;
 
   img {
     opacity: 0.5;

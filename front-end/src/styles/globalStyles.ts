@@ -1,33 +1,39 @@
 import { createGlobalStyle } from 'styled-components'
+import NunitoTTF from '../fonts/Nunito-VariableFont_wght.ttf';
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Nunito';
+    src: url(${NunitoTTF}) format('trueType');
+  }
+  
   * {
     padding: 0;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 16px;
     color: ${({ theme }) => theme.colors.defaultFont};
-    transition-duration: .6s;
+    transition-duration: .4s;
   }
-  a, h1, h2, h3, p, strong, span {
+  a, h2, h3, p, strong, span {
+    text-decoration: none;
     color: ${({ theme }) => theme.colors.defaultFont};
   }
+  h1 {
+    font-size: 2rem;
+    color: ${({ theme }) => theme.colors.background};
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
   body {
-    font-family: 'Roboto', sans-serif;  
     background-color: ${({ theme }) => theme.colors.background};
   }
   input, button, textarea, select {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito', sans-serif;
   }
   input:focus, textarea:focus, select:focus{
     outline: none;
-  }
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.primary};
-    &:hover {
-      filter: opacity(0.8)
-    }
   }
 
   ::-webkit-scrollbar {

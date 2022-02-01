@@ -1,7 +1,7 @@
 export const colors = {
   PRIMARY: "#3F8CFD",
   SECONDARY: "#343233",
-  TERTIARY: "#E8E8E8",
+  TERTIARY: "#2F7CED",
   BACKGROUND: "#FFFFFF",
   BACKGROUND2: "#F6F6F7",
   BACKGROUNDINVERT: "#B4B2B3",
@@ -13,7 +13,7 @@ export const colors = {
 export const darkColors = {
   PRIMARY: "#3F8CFD",
   SECONDARY: "#D4D2D3",
-  TERTIARY: "#E8E8E8",
+  TERTIARY: "#2F7CED",
   BACKGROUND: "#262626",
   BACKGROUND2: "#000000", 
   BACKGROUNDINVERT: "#646263", 

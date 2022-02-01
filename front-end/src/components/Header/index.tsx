@@ -4,22 +4,24 @@ import { Button, ButtonsWrapper, HeaderWrapper } from "./styles";
 function Header() {
   return (
     <HeaderWrapper>
-      <h1>E-Commerce</h1>
+      <Link to="/">
+        <h1>E-Commerce</h1>
+      </Link>
 
       <ButtonsWrapper>
-        <Link to="Messages">
+        <Link to="/messages">
           <Button>
             Ver Avaliações
           </Button>
         </Link>
 
-        <Link to="">
+        <Link to="/">
           <Button>
             Fazer Login
           </Button>
         </Link>
 
-        <Link to="">
+        <Link to="/">
           <Button>
             Cadastrar-se
           </Button>
