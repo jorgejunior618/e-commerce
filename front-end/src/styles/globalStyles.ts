@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     color: ${({ theme }) => theme.colors.defaultFont};
     transition-duration: .4s;
+    box-sizing: border-box;
   }
   a, h2, h3, p, strong, span {
     text-decoration: none;
@@ -32,8 +33,30 @@ const GlobalStyle = createGlobalStyle`
   input, button, textarea, select {
     font-family: 'Nunito', sans-serif;
   }
-  input:focus, textarea:focus, select:focus{
+  input:focus, textarea:focus, select:focus, button, button:focus{
     outline: none;
+  }
+
+  button {
+    background: none;
+    border: none;
+  }
+
+  .container {
+    padding: 0 10vw;
+  }
+
+  .button {
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-left: 15px;
+    width: fit-content;
+    color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.primary};
+    
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.tertiary};
+    }
   }
 
   ::-webkit-scrollbar {
@@ -46,10 +69,6 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.tertiary}; 
     }
-  }
-
-  .container {
-    padding: 0 10vw;
   }
 `
 

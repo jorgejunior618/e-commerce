@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
-export const PageWrapper =  styled.main`
-  display: flex;
+export const ImgWrapper = styled.main`
+  display:flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 85vh;
 
   img {
-    opacity: 0.5;
-    height: 70vh;
+    width: 50%;
   }
 `;

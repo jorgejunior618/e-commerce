@@ -57,7 +57,13 @@ export async function remove(headers: {}, params: {}, endpoint: string): Promise
   }
 }
 
-const getToken = (): string => JSON.parse((localStorage.getItem('session') || ''));
+const getSession = (): {token?: string} => JSON.parse((localStorage.getItem('session') || '{}'));
+
+export const isLogged = (): boolean => {
+  const { token } = getSession();
+  
+  return token !== undefined && token !== null;
+}
 
 export const setSession = (session: {}) => {
   localStorage.setItem('session', JSON.stringify(session));
@@ -65,10 +71,10 @@ export const setSession = (session: {}) => {
 };
 
 export function headersWithToken() {
-  const sessionToken = getToken();
+  const { token } = getSession();
 
   return {
-    Authorization: `Bearer ${sessionToken}`,
+    Authorization: `Bearer ${token}`,
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
   };
