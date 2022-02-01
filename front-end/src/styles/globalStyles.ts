@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Nunito';
     src: url(${NunitoTTF}) format('trueType');
   }
-  
+
   * {
     padding: 0;
     margin: 0;
@@ -48,27 +48,8 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  .ok-text{
-    color: ${({ theme }) => theme.colors.success};
-    font-size: 0.75rem;
-  }
-  .primary-color{
-    color: ${({ theme }) => theme.colors.primary};
-  }
-  .font-bold{
-    font-weight: 700;
-  }
-  .h2{
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 28px;
-    color: ${({ theme }) => theme.colors.defaultFont};
-  }
-  .wallet{
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.primary};
-    font-size: 2.5rem; //40px
-    line-height: 47px;
+  .container {
+    padding: 0 10vw;
   }
 `
 

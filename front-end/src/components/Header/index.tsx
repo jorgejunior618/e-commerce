@@ -3,7 +3,7 @@ import { Button, ButtonsWrapper, HeaderWrapper } from "./styles";
 
 function Header() {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper className="container">
       <Link to="/">
         <h1>E-Commerce</h1>
       </Link>
