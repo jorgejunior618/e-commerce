@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
+import { FaUndoAlt } from 'react-icons/fa';
 import Message from "../../models/Message";
 import messageService from "../../services/messages";
 import Header from "../../components/Header";
@@ -36,7 +37,7 @@ const Messages = () => {
     <>
       <Header />
       <PageWrapper className="container">
-        <h2>Mensagens do Aplicativo</h2>
+        <h2>Mensagens do Aplicativo<FaUndoAlt onClick={updateMessages} /></h2>
 
         <MessagesList>
           {messages.map((message) => {

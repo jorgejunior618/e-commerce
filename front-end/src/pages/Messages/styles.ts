@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const PageWrapper = styled.main`
   padding-top: 20px;
 
+  h2 svg {
+    margin-left: 25px;
+    fill: ${({ theme }) => theme.colors.primary}
+  }
+
   .button {
     margin-top: 12px;
     margin-left: 0;

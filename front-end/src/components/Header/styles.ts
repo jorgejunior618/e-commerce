@@ -12,4 +12,8 @@ export const HeaderWrapper = styled.header`
 export const ButtonsWrapper =  styled.nav`
   display: flex;
   align-items: center;
+
+  .button {
+    margin-left: 15px
+  }
 `;

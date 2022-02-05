@@ -40,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
   button {
     background: none;
     border: none;
+    
   }
 
   main {
@@ -53,8 +54,7 @@ const GlobalStyle = createGlobalStyle`
 
   .button {
     border-radius: 5px;
-    padding: 8px 15px;
-    margin-left: 15px;
+    padding: 8px 20px;
     width: fit-content;
     color: ${({ theme }) => theme.colors.background};
     background-color: ${({ theme }) => theme.colors.primary};

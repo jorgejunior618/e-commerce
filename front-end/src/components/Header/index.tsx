@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "../Button";
 import { ButtonsWrapper, HeaderWrapper } from "./styles";
 
 function Header() {
@@ -10,21 +11,21 @@ function Header() {
 
       <ButtonsWrapper>
         <Link to="/messages">
-          <div className="button">
+          <Button>
             Ver Avaliações
-          </div>
+          </Button>
         </Link>
 
-        <Link to="/">
-          <div className="button">
+        <Link to="/login">
+          <Button>
             Fazer Login
-          </div>
+          </Button>
         </Link>
 
         <Link to="/">
-          <div className="button">
+          <Button>
             Cadastrar-se
-          </div>
+          </Button>
         </Link>
       </ButtonsWrapper>
     </HeaderWrapper>
