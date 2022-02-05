@@ -4,6 +4,7 @@ export type Message = {
   id?: number,
   user: User,
   message: string
+  postDate: string
 }
 
 export type DbMessage = {
@@ -11,15 +12,17 @@ export type DbMessage = {
   userid: number,
   email: string,
   name: string,
+  postdate: string,
   message: string
 }
 
 export function fromDbToMessage(dbMessage: DbMessage) : Message {
-  const { id, email, message, name, userid } = dbMessage;
+  const { id, email, message, name, userid, postdate } = dbMessage;
   
   return {
     id,
     message,
+    postDate: postdate.split('T')[0],
     user: {
       id: userid,
       email,
