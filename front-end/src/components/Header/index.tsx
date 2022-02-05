@@ -22,7 +22,7 @@ function Header() {
           </Button>
         </Link>
 
-        <Link to="/">
+        <Link to="/signup">
           <Button>
             Cadastrar-se
           </Button>

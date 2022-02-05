@@ -8,6 +8,7 @@ import Landing from '../pages/Landing'
 import Login from '../pages/Login';
 import Messages from '../pages/Messages'
 import NotFound from '../pages/NotFound';
+import SignUp from '../pages/Signup';
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
         <Route path="/" element={<Landing />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
