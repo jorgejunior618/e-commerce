@@ -7,12 +7,15 @@ const GlobalStyle = createGlobalStyle`
     src: url(${NunitoTTF}) format('trueType');
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     padding: 0;
     margin: 0;
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
-    color: ${({ theme }) => theme.colors.defaultFont};
     transition-duration: .4s;
     box-sizing: border-box;
   }
@@ -66,6 +69,7 @@ const GlobalStyle = createGlobalStyle`
 
   ::-webkit-scrollbar {
     width: 8px;
+    background: ${({ theme }) => theme.colors.background}; 
   }
   ::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.colors.primary}; 
@@ -74,6 +78,10 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       box-shadow: inset 0 0 5px ${({ theme }) => theme.colors.tertiary}; 
     }
+  }
+  ::-webkit-scrollbar-corner {
+    width: 0;
+    height: 0;
   }
 `
 

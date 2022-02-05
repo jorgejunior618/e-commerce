@@ -1,8 +1,14 @@
 import { FormEvent, useCallback, useState } from "react";
+import {
+  Alert,
+  Snackbar,
+  Slide,
+} from '@mui/material';
+
 import Button from "../../components/Button";
 import Form from "../../components/Form";
 import Input from "../../components/Input";
-import { PageContainer } from "./style";
+import { PageContainer } from "./styles";
 
 function SignUp() {
   const [ email, setEmail ] = useState('');
@@ -10,14 +16,74 @@ function SignUp() {
   const [ password, setPassword ] = useState('');
   const [ confirmPassword, setConfirmPassword ] = useState('');
 
+  const validateForm = useCallback((): boolean => {
+    if(email && password && name && confirmPassword) {
+      if (password === confirmPassword) {
+       return true;
+      }
+      handleOpenAlert(false, "Confirmação de senha diferente da senha");
+      return false;
+    }
+    handleOpenAlert(false, "Preencha todos os campos");
+    return false;
+  }, [email, name, password, confirmPassword]);
+
+  const [ showAlert, setShowAlert ]= useState(false);
+  const [ successAlert, setSuccessAlert ]= useState(false);
+  const [ messageAlert, setMessageAlert ]= useState('');
+  const handleCloseAlert = (reason: any) => {
+    if (reason !== 'clickaway') setShowAlert(false);
+  }
+  
   const handleSignUp = useCallback((event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if(!validateForm) {
+      return;
+    }
+    
     console.log({ email, name, password, confirmPassword });
-  }, [email, name, password, confirmPassword])
+  }, [email, name, password, confirmPassword, validateForm]);
+  
+  const handleOpenAlert = (success = true, message = 'Sucesso') => {
+    setSuccessAlert(success);
+    setMessageAlert(message);
+    setShowAlert(true);
+  }
+
+  function TransitionDown(props: any) {
+    return <Slide {...props} direction="down" />;
+  }
+
 
   return (
     <PageContainer>
 
       <Form action="submit" onSubmit={handleSignUp} formHeader="Cadastre-se">
+        <Snackbar
+          open={showAlert}
+          autoHideDuration={5000000}
+          onClose={(event, reason) => handleCloseAlert(reason)}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          TransitionComponent={TransitionDown}
+        >
+          <Alert 
+            onClose={handleCloseAlert} 
+            variant="filled"
+            severity={successAlert ? "success" : "error" }
+            sx={{ width: '100%' }}
+          >
+            {messageAlert}
+          </Alert>
+        </Snackbar>
+        <Input
+          name="email"
+          placeholder="Insira seu e-mail"
+          type="email"
+          required
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
         <Input
           name="email"
           placeholder="E-mail"

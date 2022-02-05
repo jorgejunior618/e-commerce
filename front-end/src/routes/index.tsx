@@ -9,6 +9,7 @@ import Landing from '../pages/Landing'
 import Login from '../pages/Login';
 import Messages from '../pages/Messages'
 import NotFound from '../pages/NotFound';
+import Profile from '../pages/Profile';
 import SignUp from '../pages/Signup';
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
           <Route path="messages" element={<Messages />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
