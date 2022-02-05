@@ -22,7 +22,7 @@ export function fromDbToMessage(dbMessage: DbMessage) : Message {
   return {
     id,
     message,
-    postDate: postdate.split('T')[0],
+    postDate: postdate,
     user: {
       id: userid,
       email,

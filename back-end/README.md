@@ -18,6 +18,7 @@
     id SERIAL UNIQUE,
     userId INT NOT NULL,
     message VARCHAR NOT NULL,
+    postDate DATE NOT NULL DEFAULT CURRENT_DATE,
     CONSTRAINT fk_user_message
       FOREIGN KEY(userId) 
       REFERENCES ecommerce_users(id)

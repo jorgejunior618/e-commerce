@@ -9,7 +9,7 @@ class MessageRepository {
         SELECT 
           m.id,
           userId,
-          postDate,
+          postdate,
           name,
           email,
           message
