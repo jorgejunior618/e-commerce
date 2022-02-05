@@ -7,6 +7,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-height: 20vh
 `;
 
 export const ButtonsWrapper =  styled.nav`

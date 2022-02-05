@@ -1,6 +1,10 @@
+import { PageContainer } from "./styles";
+
 const Profile = () => {
   return (
-    <div></div>
+    <PageContainer>
+      
+    </PageContainer>
     );
 }
 

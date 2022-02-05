@@ -18,9 +18,10 @@ export const ThemeButtonContainer = styled.button`
   z-index: 10000;
 
   transition-duration: .4s;
+  opacity: 0.6;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 1;
   }
   
   &:disabled {

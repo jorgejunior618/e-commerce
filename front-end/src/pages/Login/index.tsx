@@ -1,7 +1,6 @@
 import { MouseEvent, useState } from "react";
 import Button from "../../components/Button";
 import Form from "../../components/Form";
-import Header from "../../components/Header";
 import Input from "../../components/Input";
 import { PageContainer } from "./style";
 
@@ -15,36 +14,31 @@ function Login() {
   }
 
   return (
-    <>
-      <Header />
-      
-      <PageContainer className="container">
+    <PageContainer>
+      <Form action="submit" formHeader="Login">
+        <Input
+          name="email"
+          placeholder="Insira seu e-mail"
+          type="email"
+          required
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
 
-        <Form action="submit" formHeader="Login">
-          <Input
-            name="email"
-            placeholder="Insira seu e-mail"
-            type="email"
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
+        <Input
+          name="password"
+          placeholder="Insira sua senha"
+          type="password"
+          required
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
 
-          <Input
-            name="password"
-            placeholder="Insira sua senha"
-            type="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-
-          <Button onClick={handleLogin}>
-            Entrar
-          </Button>
-        </Form>
-      </PageContainer>
-    </>
+        <Button onClick={handleLogin}>
+          Entrar
+        </Button>
+      </Form>
+    </PageContainer>
   );
 }
 
