@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const PageWrapper = styled.main`
   padding-top: 20px;
-  height: 85vh;
 
   .button {
     margin-top: 12px;

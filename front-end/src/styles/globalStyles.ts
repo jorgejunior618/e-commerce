@@ -42,8 +42,13 @@ const GlobalStyle = createGlobalStyle`
     border: none;
   }
 
+  main {
+    height: calc(100vh - 117px);
+  }
+
   .container {
-    padding: 0 10vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
   }
 
   .button {
