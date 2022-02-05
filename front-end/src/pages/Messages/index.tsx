@@ -5,6 +5,7 @@ import messageService from "../../services/messages";
 import { MessageItem, MessagesList, PageWrapper, QuoteEmail, Text } from "./styles";
 import { isLogged } from "../../utils/http";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
 
 const Messages = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -34,7 +35,15 @@ const Messages = () => {
 
   return (
     <PageWrapper className="container">
-      <h2>Mensagens do Aplicativo<FaUndoAlt onClick={updateMessages} /></h2>
+      <header>
+        <h2>
+          Mensagens do Aplicativo<FaUndoAlt onClick={updateMessages} />
+        </h2>
+
+        <a href="#comentar">
+          <Button >Adicionar comentário</Button>
+        </a>
+      </header>
 
       <MessagesList>
         {messages.map((message) => {
@@ -47,7 +56,7 @@ const Messages = () => {
         })}
       </MessagesList>
 
-      <form action="submit" onSubmit={(e) => onSubmit(e)}>
+      <form  id="comentar" action="submit" onSubmit={(e) => onSubmit(e)}>
         <h2>Adicionar comentário</h2>
         <button type="submit" className="button">Comentar</button>
       </form>

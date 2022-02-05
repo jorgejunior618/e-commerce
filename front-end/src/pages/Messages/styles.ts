@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
-export const PageWrapper = styled.main`
+export const PageWrapper = styled.section`
   padding-top: 20px;
 
-  h2 svg {
-    margin-left: 25px;
-    fill: ${({ theme }) => theme.colors.primary}
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    h2 svg {
+      margin-left: 25px;
+      fill: ${({ theme }) => theme.colors.primary}
+    }
   }
 
   .button {
@@ -15,13 +22,12 @@ export const PageWrapper = styled.main`
 `;
 
 export const MessagesList = styled.ul`
-  margin-top: 12px;
-  height: 60vh;
+  max-height: 70vh;
   overflow: scroll;
 `;
 
 export const MessageItem = styled.div`
-  margin-top: 12px;
+  margin-bottom: 12px;
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   padding: 15px 30px;
   border-radius: 5px;
