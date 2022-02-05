@@ -37,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 
-  button {
+  button, input {
     background: none;
     border: none;
     
