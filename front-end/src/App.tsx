@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './styles/globalStyles';
 import { theme, darkTheme } from './styles/themes'
 import ThemeButton from './components/ThemeButton';
-import Header from "./components/Header";
 
 function App() {
   const [themeMode, setThemeMode] = useState('light');

@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.defaultFont};
   }
   h1 {
-    font-size: 2rem;
+    font-size: 2.6rem;
     color: ${({ theme }) => theme.colors.background};
   }
   h2 {

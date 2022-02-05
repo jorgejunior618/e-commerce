@@ -12,8 +12,8 @@ export const PageWrapper = styled.main`
 
 export const MessagesList = styled.ul`
   margin-top: 12px;
-    max-height: 60vh;
-    overflow: scroll;
+  height: 60vh;
+  overflow: scroll;
 `;
 
 export const MessageItem = styled.div`
