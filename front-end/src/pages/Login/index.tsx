@@ -23,7 +23,7 @@ function Login() {
         <Form action="submit" formHeader="Login">
           <Input
             name="email"
-            placeholder="email"
+            placeholder="Insira seu e-mail"
             type="email"
             required
             value={email}
@@ -32,7 +32,7 @@ function Login() {
 
           <Input
             name="password"
-            placeholder="password"
+            placeholder="Insira sua senha"
             type="password"
             required
             value={password}

@@ -11,6 +11,8 @@ function Input({
   id,
   className,
   disabled,
+  name,
+  required,
 }: InputHTMLAttributes<HTMLInputElement>) {
   return(
     <StyledInput
@@ -23,6 +25,8 @@ function Input({
       id={id}
       className={className}
       disabled={disabled}
+      name={name}
+      required={required}
     />
   );
 }
