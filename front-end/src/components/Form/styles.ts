@@ -6,7 +6,7 @@ export const FormWrapper = styled.form`
   flex-direction: column;
   border-radius: 15px;
   background-color: ${({ theme }) => theme.colors.backgroundLight};
-  box-shadow: 0 2px .5em black;
+  box-shadow: 0 0 1em #262626;
   width: 50vw;
   padding: 25px 50px;
 
@@ -16,5 +16,9 @@ export const FormWrapper = styled.form`
 
   input + input {
     margin-top: 15px;
+  }
+
+  .button {
+    margin-top 20px
   }
 `;

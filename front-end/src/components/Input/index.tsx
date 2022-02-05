@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from "react";
+import { StyledInput } from "./styles";
 
 function Input({
   type,
@@ -12,7 +13,7 @@ function Input({
   disabled,
 }: InputHTMLAttributes<HTMLInputElement>) {
   return(
-    <input
+    <StyledInput
       type={type}
       onChange={onChange}
       value={value}

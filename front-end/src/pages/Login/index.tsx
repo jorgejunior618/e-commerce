@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import Button from "../../components/Button";
 import Form from "../../components/Form";
 import Header from "../../components/Header";
@@ -8,6 +8,11 @@ import { PageContainer } from "./style";
 function Login() {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+
+  const handleLogin = (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+    event.preventDefault();
+    console.log({ email, password });
+  }
 
   return (
     <>
@@ -20,6 +25,7 @@ function Login() {
             name="email"
             placeholder="email"
             type="email"
+            required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
@@ -28,12 +34,13 @@ function Login() {
             name="password"
             placeholder="password"
             type="password"
+            required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
 
-          <Button>
-            Login
+          <Button onClick={handleLogin}>
+            Entrar
           </Button>
         </Form>
       </PageContainer>
@@ -41,5 +48,5 @@ function Login() {
   );
 }
 
-export default Login;;
+export default Login;
 
