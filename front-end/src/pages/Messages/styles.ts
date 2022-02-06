@@ -19,6 +19,11 @@ export const PageWrapper = styled.section`
     margin-top: 12px;
     margin-left: 0;
   }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const MessagesList = styled.ul`
@@ -41,7 +46,16 @@ export const QuoteEmail = styled.span`
   color: ${({ theme }) => theme.colors.secondary};
   font-style: italic;
   font-weight: 400;
+  margin-left: 15px;
 `;
+
+export const PostDate = styled.span`
+  color: ${({ theme }) => theme.colors.secondary};
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 15px;
+`;
+
 
 export const Text = styled.p`
   margin-top: 12px;

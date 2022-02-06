@@ -44,7 +44,7 @@ function Router() {
         logout={logout}
       />} >
         <Route path="" element={<Landing />} />
-        <Route path="messages" element={<Messages />} />
+        <Route path="messages" element={<Messages isUserLogged={isUserLogged} />} />
         { isUserLogged ?
           <Route path="profile" element={<Profile />} /> :
           <></>

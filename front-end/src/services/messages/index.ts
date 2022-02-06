@@ -5,14 +5,15 @@ async function getMessages(): Promise<{messages: Message[]}> {
   const headers = httpHelper.defaultHeaders();
 
   const { data } = await httpHelper.get<{messages: Message[]}>(headers, '/messages');
+  console.log(data);
   
   return data;
 }
 
-async function createMessage(message: Message): Promise<void> {
+async function createMessage(message: string): Promise<void> {
   const headers = httpHelper.headersWithToken();
 
-  await httpHelper.post(headers, message, '/messages');
+  await httpHelper.post(headers, { message }, '/messages');
 }
 
 const messageService = {
