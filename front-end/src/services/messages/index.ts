@@ -8,9 +8,16 @@ async function getMessages(): Promise<{messages: Message[]}> {
   
   return data;
 }
+
+async function createMessage(message: Message): Promise<void> {
+  const headers = httpHelper.headersWithToken();
+
+  await httpHelper.post(headers, message, '/messages');
+}
+
 const messageService = {
   getMessages,
+  createMessage,
 }
 
 export default messageService;
-

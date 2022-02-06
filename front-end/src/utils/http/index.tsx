@@ -2,9 +2,9 @@ import axios, { AxiosResponse } from "axios";
 
 const BASE_URL = 'http://localhost:5000';
 
-export async function post(headers: {}, params: {}, endpoint: string): Promise<{}> {
+export async function post<T = any>(headers: {}, params: {}, endpoint: string): Promise<AxiosResponse<T>> {
   try {
-    return await axios.post(
+    return await axios.post<T>(
       BASE_URL + endpoint,
       params,
       {
@@ -16,9 +16,9 @@ export async function post(headers: {}, params: {}, endpoint: string): Promise<{
   }
 }
 
-export async function put(headers: {}, params: {}, endpoint: string): Promise<{}> {
+export async function put<T = any>(headers: {}, params: {}, endpoint: string): Promise<AxiosResponse<T>> {
   try {
-    return await axios.put(
+    return await axios.put<T>(
       BASE_URL + endpoint,
       params,
       {
@@ -43,9 +43,9 @@ export async function get<T = any>(headers: {}, endpoint: string): Promise<Axios
   }
 }
 
-export async function remove(headers: {}, params: {}, endpoint: string): Promise<{}> {
+export async function remove<T = any>(headers: {}, params: {}, endpoint: string): Promise<AxiosResponse<T>> {
   try {
-    return await axios.delete(
+    return await axios.delete<T>(
       BASE_URL + endpoint,
       {
         params,
