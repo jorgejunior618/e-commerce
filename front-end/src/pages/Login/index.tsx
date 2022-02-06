@@ -73,7 +73,7 @@ function Login() {
     }
 
     
-  }, [email, password, validateLogin, handleOpenAlert]);
+  }, [email, password, validateLogin, handleOpenAlert, navigateTo]);
 
   function TransitionDown(props: any) {
     return <Slide {...props} direction="down" />;
