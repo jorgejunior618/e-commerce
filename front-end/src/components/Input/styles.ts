@@ -6,8 +6,8 @@ export const StyledInput = styled.input`
   border: solid 1px ${({ theme }) => theme.colors.backgroundInverted};
   border-radius: 4px;
   flex: auto;
-
+  
   &:disabled {
-    opacity: .6;
+    background-color: ${({ theme }) => theme.colors.backgroundInverted};
   }
 `;
