@@ -77,7 +77,7 @@ function Login({ setUserLogged }: LoginCustomProps) {
     }
 
     
-  }, [email, password, validateLogin, handleOpenAlert, navigateTo]);
+  }, [email, password, validateLogin, handleOpenAlert, navigateTo, setUserLogged]);
 
   function TransitionDown(props: any) {
     return <Slide {...props} direction="down" />;
