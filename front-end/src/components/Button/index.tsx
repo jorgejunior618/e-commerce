@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
+import { ButtonWrapper } from './styles';
 
 function Button({
   className,
@@ -7,7 +8,7 @@ function Button({
   children
 }: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <button
+    <ButtonWrapper
       id={id}
       className={
         `button${className && className.length > 2 ? ' ' + className : ''}`
@@ -17,7 +18,7 @@ function Button({
         : (event) => {}}
     >
       {children}
-    </button>
+    </ButtonWrapper>
   );
 }
 
