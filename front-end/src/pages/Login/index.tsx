@@ -1,47 +1,79 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useCallback, useState } from "react";
 import {
   Alert,
   Snackbar,
   Slide,
 } from '@mui/material';
 
+import profileService from "../../services/profile";
+
 import Button from "../../components/Button";
 import Form from "../../components/Form";
 import Input from "../../components/Input";
 import { PageContainer } from "./style";
+import HttpException from "../../models/HttpException";
+import { isLogged, setSession } from "../../utils/http";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  
+  const [ showAlert, setShowAlert ]= useState(false);
+  const [ successAlert, setSuccessAlert ]= useState(false);
+  const [ messageAlert, setMessageAlert ]= useState('');
 
-  const handleLogin = (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
-    event.preventDefault();
-    if(!validateLogin()) {
-      return;
-    }
-    console.log({ email, password });
-  }
+  const navigateTo = useNavigate();
+  
+  const handleCloseAlert = useCallback((reason: any) => {
+    if (reason !== 'clickaway') setShowAlert(false);
+  }, []);
 
-  const validateLogin = (): boolean => {
+  const handleOpenAlert = useCallback((success = true, message = 'Sucesso') => {
+    setSuccessAlert(success);
+    setMessageAlert(message);
+    setShowAlert(true);
+  }, []);
+
+  
+  const validateLogin = useCallback((): boolean => {
     if(email && password) {
       return true;
     }
     handleOpenAlert(false, "Preencha email e senha");
     return false;
-  }
+  }, [email, password, handleOpenAlert]);
 
-  const [ showAlert, setShowAlert ]= useState(false);
-  const [ successAlert, setSuccessAlert ]= useState(false);
-  const [ messageAlert, setMessageAlert ]= useState('');
-  const handleCloseAlert = (reason: any) => {
-    if (reason !== 'clickaway') setShowAlert(false);
-  }
+  const handleLogin = useCallback(async (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+    event.preventDefault();
+    if(!validateLogin()) {
+      return;
+    }
 
-  const handleOpenAlert = (success = true, message = 'Sucesso') => {
-    setSuccessAlert(success);
-    setMessageAlert(message);
-    setShowAlert(true);
-  }
+    try {
+      const response = await profileService.login({ email, password });
+      console.log(response);
+
+      setSession(response);
+      setTimeout(() => {
+        const logged = isLogged();
+        if(logged) {
+          navigateTo('/profile')
+        }
+      }, 500)
+    } catch(error) {
+      if(error instanceof HttpException) {
+        console.log(error.statuscode);
+        
+        if (error.statuscode === 401) {
+          return handleOpenAlert(false, 'E-mail ou senha inválidos');
+        }
+      }
+      handleOpenAlert(false, 'Erro de conexão, tente novamente');
+    }
+
+    
+  }, [email, password, validateLogin, handleOpenAlert]);
 
   function TransitionDown(props: any) {
     return <Slide {...props} direction="down" />;
@@ -52,7 +84,7 @@ function Login() {
       <Form action="submit" formHeader="Login">
       <Snackbar
         open={showAlert}
-        autoHideDuration={5000000}
+        autoHideDuration={5000}
         onClose={(event, reason) => handleCloseAlert(reason)}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         TransitionComponent={TransitionDown}

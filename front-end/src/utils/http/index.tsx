@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import HttpException from "../../models/HttpException";
 
 const BASE_URL = 'http://localhost:5000';
 
@@ -12,6 +13,10 @@ export async function post<T = any>(headers: {}, params: {}, endpoint: string): 
       }
     )
   } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new HttpException(error.response?.status ?? 500, error.message);
+    }
+    
     return Promise.reject(error);
   }
 }
@@ -26,6 +31,10 @@ export async function put<T = any>(headers: {}, params: {}, endpoint: string): P
       }
     )
   } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new HttpException(error.response?.status ?? 500, error.message);
+    }
+    
     return Promise.reject(error);
   }
 }
@@ -39,6 +48,10 @@ export async function get<T = any>(headers: {}, endpoint: string): Promise<Axios
       }
     )
   } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new HttpException(error.response?.status ?? 500, error.message);
+    }
+    
     return Promise.reject(error);
   }
 }
@@ -53,6 +66,10 @@ export async function remove<T = any>(headers: {}, params: {}, endpoint: string)
       }
     )
   } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new HttpException(error.response?.status ?? 500, error.message);
+    }
+    
     return Promise.reject(error);
   }
 }
@@ -61,6 +78,9 @@ const getSession = (): {token?: string} => JSON.parse((localStorage.getItem('ses
 
 export const isLogged = (): boolean => {
   const { token } = getSession();
+
+  console.log(token);
+  
   
   return token !== undefined && token !== null;
 }
