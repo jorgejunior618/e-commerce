@@ -2,10 +2,16 @@ import { Outlet } from "react-router-dom";
 import Header from "../Header";
 import { PageContainer } from "./styles";
 
-function StaticContent() {
+type MyProps = {
+  isUserLogged: boolean,
+  logout: Function,
+}
+
+function StaticContent({ isUserLogged, logout }: MyProps) {
+  
   return (
     <>
-      <Header />
+      <Header handleLogOut={logout} isUserLogged={isUserLogged} />
       <PageContainer className="container">
         <Outlet />
       </PageContainer>

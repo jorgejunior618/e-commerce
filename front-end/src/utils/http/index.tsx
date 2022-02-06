@@ -79,15 +79,15 @@ const getSession = (): {token?: string} => JSON.parse((localStorage.getItem('ses
 export const isLogged = (): boolean => {
   const { token } = getSession();
 
-  console.log(token);
-  
-  
   return token !== undefined && token !== null;
 }
 
-export const setSession = (session: {}) => {
-  localStorage.setItem('session', JSON.stringify(session));
-  return session;
+export const setSession = (session?: {}) => {
+  if(session) {
+    localStorage.setItem('session', JSON.stringify(session));
+  } else {
+    localStorage.removeItem('session');
+  }
 };
 
 export function headersWithToken() {

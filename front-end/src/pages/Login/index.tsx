@@ -15,7 +15,10 @@ import HttpException from "../../models/HttpException";
 import { isLogged, setSession } from "../../utils/http";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+type LoginCustomProps = {
+  setUserLogged: Function,
+}
+function Login({ setUserLogged }: LoginCustomProps) {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   
@@ -55,6 +58,7 @@ function Login() {
       console.log(response);
 
       setSession(response);
+      setUserLogged();
       setTimeout(() => {
         const logged = isLogged();
         if(logged) {

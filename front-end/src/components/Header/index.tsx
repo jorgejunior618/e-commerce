@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import Button from "../Button";
 import { ButtonsWrapper, HeaderWrapper } from "./styles";
 
-function Header() {
+type LinksProps = {
+  isUserLogged: boolean,
+  handleLogOut: Function,
+}
+
+function Header({ isUserLogged, handleLogOut }: LinksProps) {
   return (
     <HeaderWrapper className="container">
       <Link to="/">
@@ -15,18 +20,31 @@ function Header() {
             Ver Avaliações
           </Button>
         </Link>
+        {isUserLogged ?
+          <>
+            <Link to="/profile">
+              <Button>
+                Meu Perfil
+              </Button>
+            </Link>
+            <Button onClick={() => handleLogOut()}>
+              Sair
+            </Button>
+          </> :
+          <>
+            <Link to="/login">
+              <Button>
+                Fazer Login
+              </Button>
+            </Link>
 
-        <Link to="/login">
-          <Button>
-            Fazer Login
-          </Button>
-        </Link>
-
-        <Link to="/signup">
-          <Button>
-            Cadastrar-se
-          </Button>
-        </Link>
+            <Link to="/signup">
+              <Button>
+                Cadastrar-se
+              </Button>
+            </Link>
+          </>
+        }
       </ButtonsWrapper>
     </HeaderWrapper>
   );
