@@ -40,8 +40,6 @@ function SignUp() {
   const validateForm = useCallback((): boolean => {
     if(email && password && name && confirmPassword) {
       if (password === confirmPassword) {
-        console.log({password, confirmPassword});
-        
        return true;
       }
       handleOpenAlert(false, "Confirmação de senha diferente da senha");
@@ -66,8 +64,6 @@ function SignUp() {
       }, 5000)
     } catch (error) {
       if(error instanceof HttpException) {
-        console.log(error.statuscode);
-        
         if (error.statuscode === 401) {
           return handleOpenAlert(false, 'E-mail ja em uso');
         }

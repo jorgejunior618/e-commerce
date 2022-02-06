@@ -55,8 +55,6 @@ function Login({ setUserLogged }: LoginCustomProps) {
 
     try {
       const response = await profileService.login({ email, password });
-      console.log(response);
-
       setSession(response);
       setUserLogged();
       setTimeout(() => {
@@ -67,8 +65,6 @@ function Login({ setUserLogged }: LoginCustomProps) {
       }, 500);
     } catch(error) {
       if(error instanceof HttpException) {
-        console.log(error.statuscode);
-        
         if (error.statuscode === 401) {
           return handleOpenAlert(false, 'E-mail ou senha inválidos');
         }
