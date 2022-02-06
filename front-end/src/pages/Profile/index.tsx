@@ -1,4 +1,7 @@
 import { FormEvent, useCallback, useEffect, useState } from "react";
+
+import profileService from "../../services/profile";
+
 import Button from "../../components/Button";
 import Form from "../../components/Form";
 import Input from "../../components/Input";
@@ -25,10 +28,16 @@ function Profile() {
     setEditingMode(false);
   }
 
+  const handleGetProfile = useCallback(async () => {
+    const { user } = await profileService.getProfile();
+
+    setEmail(user.email);
+    setName(user.name);
+  }, []);
+
   useEffect(() => {
-    setEmail('email@default.com');
-    setName('Nome Teste');
-  }, [setEmail, setName] );
+    handleGetProfile();
+  }, [handleGetProfile] );
 
   return (
     <PageContainer>
@@ -89,18 +98,20 @@ function Profile() {
           />
           </>
           : <></>}
-
-        <ButtonsGroup>
-          <Button type="submit">
-            {editing ? 'Atualizar' : 'Editar perfil'}
-          </Button>
-
-          {editing ?
-            <Button id="cancel" onClick={handleCancel}>
-              Cancelar
+        {true ? <></> :
+        <>
+          <ButtonsGroup>
+            <Button type="submit">
+              {editing ? 'Atualizar' : 'Editar perfil'}
             </Button>
-            : <></>}
-        </ButtonsGroup>
+
+            {editing ?
+              <Button id="cancel" onClick={handleCancel}>
+                Cancelar
+              </Button>
+              : <></>}
+          </ButtonsGroup>
+        </>}
       </Form>
     </PageContainer>
   );
