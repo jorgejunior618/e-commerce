@@ -62,4 +62,12 @@
     - Headers: Token bearer
     - Body: { message: string }
     - Retorno: 200 (no body)
+  
+## Configurar na Máquina pessoal
+
+  É necessário ter o [Node](https://nodejs.org/en/) instalado na sua máquina
+  Abrir console no diretório de sua preferência e digitar o comando `git clone https://github.com/jorgejunior618/e-commerce` para clonar o repositório
+  Ao finalizar o Download, utilizar o comando `npm install` na pasta `back-end` para instalar todas as dependências.
+
+  Utilizar o comando `npm run dev` para inicializar o projeto em modo de desenvolvimento, ou `npm run build` seguido de `npm start` para gerar o arquivo em modo de produção, e simulá-lo localmente.
 
