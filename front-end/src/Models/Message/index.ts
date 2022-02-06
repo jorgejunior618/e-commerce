@@ -2,7 +2,8 @@ import User from "../User";
 
 type Message = {
   id?: number,
-  user: User,
+  postDate: string,
+  user?: User,
   message: string
 }
 
