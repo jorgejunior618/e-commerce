@@ -5,16 +5,22 @@ import {
   Slide,
 } from '@mui/material';
 
+import profileService from '../../services/profile';
+
 import Button from "../../components/Button";
 import Form from "../../components/Form";
 import Input from "../../components/Input";
 import { PageContainer } from "./styles";
+import HttpException from "../../models/HttpException";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [ email, setEmail ] = useState('');
   const [ name, setName ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ confirmPassword, setConfirmPassword ] = useState('');
+
+  const navigateTo = useNavigate();
   
   const [ showAlert, setShowAlert ] = useState(false);
   const [ successAlert, setSuccessAlert ] = useState(false);
@@ -34,6 +40,8 @@ function SignUp() {
   const validateForm = useCallback((): boolean => {
     if(email && password && name && confirmPassword) {
       if (password === confirmPassword) {
+        console.log({password, confirmPassword});
+        
        return true;
       }
       handleOpenAlert(false, "Confirmação de senha diferente da senha");
@@ -43,15 +51,30 @@ function SignUp() {
     return false;
   }, [email, name, password, confirmPassword, handleOpenAlert]);
 
-  const handleSignUp = useCallback((event: FormEvent<HTMLFormElement>) => {
+  const handleSignUp = useCallback(async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if(!validateForm) {
+    if(!validateForm()) {
       return;
     }
     
-    console.log({ email, name, password, confirmPassword });
-  }, [email, name, password, confirmPassword, validateForm]);
+    try {
+      await profileService.createProfile(email, name, password);
+      handleOpenAlert(true, 'Perfil criado com sucesso, redirecionando para Login');
+      setTimeout(() => {
+        navigateTo('/login');
+      }, 5000)
+    } catch (error) {
+      if(error instanceof HttpException) {
+        console.log(error.statuscode);
+        
+        if (error.statuscode === 401) {
+          return handleOpenAlert(false, 'E-mail ja em uso');
+        }
+      }
+      handleOpenAlert(false, 'Erro de conexão, tente novamente');
+    }
+  }, [email, name, password, validateForm, handleOpenAlert, navigateTo]);
   
 
   function TransitionDown(props: any) {
@@ -64,7 +87,7 @@ function SignUp() {
       <Form action="submit" onSubmit={handleSignUp} formHeader="Cadastre-se">
         <Snackbar
           open={showAlert}
-          autoHideDuration={5000000}
+          autoHideDuration={5000}
           onClose={(event, reason) => handleCloseAlert(reason)}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           TransitionComponent={TransitionDown}
@@ -78,6 +101,7 @@ function SignUp() {
             {messageAlert}
           </Alert>
         </Snackbar>
+
         <Input
           name="email"
           placeholder="Insira seu e-mail"
@@ -86,15 +110,7 @@ function SignUp() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <Input
-          name="email"
-          placeholder="E-mail"
-          type="email"
-          required={true}
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        
+
         <Input
           name="name"
           placeholder="Como deseja ser chamado"

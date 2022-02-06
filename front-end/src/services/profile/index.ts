@@ -11,7 +11,13 @@ async function login(params: {email: string, password: string}): Promise<{ token
 async function createProfile(email: string, name:string, password: string): Promise<{}> {
   const headers = httpHelper.headersWithToken();
 
-  const { data } = await httpHelper.get(headers, '/session/register');
+  const params = {
+    email,
+    name,
+    password,
+  }
+
+  const { data } = await httpHelper.post(headers, params, '/session/register');
   
   return data;
 }
