@@ -15,7 +15,22 @@ function SignUp() {
   const [ name, setName ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ confirmPassword, setConfirmPassword ] = useState('');
+  
+  const [ showAlert, setShowAlert ] = useState(false);
+  const [ successAlert, setSuccessAlert ] = useState(false);
+  const [ messageAlert, setMessageAlert ] = useState('');
 
+  const handleOpenAlert = useCallback((success = true, message = 'Sucesso') => {
+    setSuccessAlert(success);
+    setMessageAlert(message);
+    setShowAlert(true);
+  }, []);
+
+
+  const handleCloseAlert =useCallback( (reason: any) => {
+    if (reason !== 'clickaway') setShowAlert(false);
+  }, []);
+  
   const validateForm = useCallback((): boolean => {
     if(email && password && name && confirmPassword) {
       if (password === confirmPassword) {
@@ -26,15 +41,8 @@ function SignUp() {
     }
     handleOpenAlert(false, "Preencha todos os campos");
     return false;
-  }, [email, name, password, confirmPassword]);
+  }, [email, name, password, confirmPassword, handleOpenAlert]);
 
-  const [ showAlert, setShowAlert ]= useState(false);
-  const [ successAlert, setSuccessAlert ]= useState(false);
-  const [ messageAlert, setMessageAlert ]= useState('');
-  const handleCloseAlert = (reason: any) => {
-    if (reason !== 'clickaway') setShowAlert(false);
-  }
-  
   const handleSignUp = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -45,16 +53,10 @@ function SignUp() {
     console.log({ email, name, password, confirmPassword });
   }, [email, name, password, confirmPassword, validateForm]);
   
-  const handleOpenAlert = (success = true, message = 'Sucesso') => {
-    setSuccessAlert(success);
-    setMessageAlert(message);
-    setShowAlert(true);
-  }
 
   function TransitionDown(props: any) {
     return <Slide {...props} direction="down" />;
   }
-
 
   return (
     <PageContainer>
