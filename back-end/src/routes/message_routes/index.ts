@@ -26,7 +26,7 @@ messageRoutes.post(MESSAGE_URL, jwtAuthenticationMiddleware, async (
   , next: NextFunction
 ) => {
   try {
-    if(!request.user || !request.user.id || typeof request.user !== 'object') {
+    if(!request.user || typeof request.user !== 'object' || !request.user.id ) {
       throw new ForbidenError("Faltando credenciais!");
     }
     const { message } = request.body;
