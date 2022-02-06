@@ -64,7 +64,7 @@ function Login({ setUserLogged }: LoginCustomProps) {
         if(logged) {
           navigateTo('/profile')
         }
-      }, 500)
+      }, 500);
     } catch(error) {
       if(error instanceof HttpException) {
         console.log(error.statuscode);
