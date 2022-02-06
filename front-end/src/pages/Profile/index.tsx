@@ -18,11 +18,10 @@ function Profile() {
     event.preventDefault();
 
     if(editing) {
-      console.log({ email, name, password, confirmPassword });
     }
 
     setEditingMode(!editing);
-  }, [editing, email, name, password, confirmPassword]);
+  }, [editing]);
 
   const handleCancel = () => {
     setEditingMode(false);
