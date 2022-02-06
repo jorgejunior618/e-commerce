@@ -16,6 +16,7 @@
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Styled-Components](https://styled-components.com/)
+- [mui (React material-ui)](https://mui.com/pt/)
 
 
 ## About the Project
